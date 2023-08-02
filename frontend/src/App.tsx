@@ -1,8 +1,15 @@
+import { Divider } from "../node_modules/@mui/material/index"
+import TopicCard from "./components/TopicCard/index"
+
+
 function App() {
 
   return (
       <div id="App">
-        sdjdjdjdjdjdjdlkajhsdjfhsljfahslkfjhsaljfh
+        <TopicCard
+        />
+        <Divider/>
+        <TopicCard/>
       </div>
   )
 }
