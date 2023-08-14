@@ -1,5 +1,6 @@
-import { Divider } from "../node_modules/@mui/material/index"
+import { Divider } from "@mui/material/index"
 import TopicCard from "./components/TopicCard/index"
+import TopicCardSkeleton from "./components/TopicCardSkeleton/index"
 
 
 function App() {
@@ -10,6 +11,13 @@ function App() {
         />
         <Divider/>
         <TopicCard/>
+        <Divider/>
+        <TopicCard/>
+        <Divider/>
+        <TopicCard/>
+        <Divider/>
+        <TopicCard/>
+        <TopicCardSkeleton/>
       </div>
   )
 }
