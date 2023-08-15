@@ -1,4 +1,5 @@
-import { Divider } from "@mui/material/index"
+import { Divider } from "@mui/material"
+import HeaderProfile from "./components/HeaderProfile/index"
 import TopicCard from "./components/TopicCard/index"
 import TopicCardSkeleton from "./components/TopicCardSkeleton/index"
 
@@ -7,8 +8,8 @@ function App() {
 
   return (
       <div id="App">
-        <TopicCard
-        />
+        <HeaderProfile/>
+        <TopicCard/>
         <Divider/>
         <TopicCard/>
         <Divider/>
