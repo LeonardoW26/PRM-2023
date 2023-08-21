@@ -2,7 +2,13 @@ import TopicCardActions from "../TopicCardActions/index";
 import TopicCardBody from "../TopicCardBody/index";
 import TopicCardHeader from "../TopicCardHeader/index"
 
-function TopicCard() {
+type TopicCardProps = {
+    topic: any
+}
+
+function TopicCard({
+    topic
+}: TopicCardProps) {
     return (
         <div id="topic-card">
             <TopicCardHeader />
