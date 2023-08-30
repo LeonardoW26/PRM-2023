@@ -1,15 +1,11 @@
 import { Box } from "@mui/material/index";
+import { useEffect, useState } from "react";
 import HeaderProfile from "../../components/HeaderProfile/index";
 import TopicList from "../../components/TopicList/index";
 
+
 function TopicPage() {
 
-    const profile = {
-        fullname: 'Leonardo Welzel',
-        username: 'SpankaShota',
-        description: 'DjAzeitona praticante de azeitonismo, Nome do Pai: Azeitonasso cardeiro pinto',
-        createdAt: '2022-08-22'
-    }
 
     const topics =[
         {
@@ -35,6 +31,18 @@ function TopicPage() {
             createdAt: '2023-08-23 23:26:12'
         }
     ]
+
+    const [profile, setProfile] = useState({});
+
+    useEffect(() => {
+
+        fetch('http://localhost:3000/profile')
+        .then(res => res.json())
+        .then(data => {
+            setProfile(data);
+        })
+
+    }, [])
 
    return (
         <Box id="topic-page" display="flex" flexDirection="column" alignItems="center" gap={3}>

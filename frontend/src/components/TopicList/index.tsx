@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
 import { Divider } from "@mui/material";
 import TopicCard from "../../components/TopicCard/index"
-import TopicCardSkeleton from "../../components/TopicCardSkeleton/index"
 
 type TopicListProps = {
     items: any
@@ -13,27 +12,13 @@ function TopicList({
     return (
         <Box id="topic-list" display="flex" flexDirection="column" gap={3}>
 
-            {items.map((item: any) => (
-                <Box display="flex" flexDirection="column" gap={3}>
-                    <TopicCard />
+            {items.map((item: any, index: number) => (
+                <Box display="flex" flexDirection="column" gap={3} key={index}>
+                    <TopicCard topic={item} />
                     <Divider />
                 </Box>
             ))}
-
-            <TopicCard/>
-            <Divider/>
-            <TopicCard/>
-            <Divider/>
-            <TopicCard/>
-            <Divider/>
-            <TopicCard/>
-            <Divider/>
-            <TopicCard/>
-            <Divider/>
-            <TopicCardSkeleton/>
         </Box>
-
-
     )
 }
 
