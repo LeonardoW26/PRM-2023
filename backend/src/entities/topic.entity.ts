@@ -2,18 +2,13 @@ import { Column, CreateDateColumn, Entity } from "typeorm";
 import { PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class User {
+export class Topic {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({nullable: false, length: 50})
-    fullname: string;
-
-    @Column({nullable: false, length: 20})
-    username: string;
-
     @Column({length: 250})
-    description: string;
+    content: string;
+
 
     @CreateDateColumn({name: 'created_at'})
     createdAt: Date;
