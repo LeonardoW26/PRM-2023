@@ -11,8 +11,19 @@ export class TopicService {
         private readonly repository: Repository<Topic>
     ) {}
 
-    findALL(): Promise<Topic[]> {
+    findAll(): Promise<Topic[]> {
         return this.repository.find();
     }
 
+    findById(id: number): Promise<Topic>{
+        return this.repository.findOneBy({id: id})
+    }
+
+    create(topic: Topic): Promise<Topic> {
+        return this.repository.save(topic);
+    }
+
+    async delete(id: number): Promise<void> {
+        await this.repository.delete(id);
+    }
 }

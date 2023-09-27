@@ -1,11 +1,15 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProfileController } from './controllers/profile.controller';
-import { TopicController } from './controllers/topic.controller';
 import { ProfileService } from './services/profile.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserController } from './controllers/user.controller';
+import { UserService } from './services/user.service';
+import { User } from './entities/user.entity';
+import { TopicController } from './controllers/topic.controller';
 import { TopicService } from './services/topic.service';
+import { Topic } from './entities/topic.entity';
 
 @Module({
   imports: [
@@ -15,10 +19,13 @@ import { TopicService } from './services/topic.service';
       port: 3306,
       username: 'root',
       password: 'Welzel26@',
-      database: 'prm_2023'
-    })
+      database: 'prm_2023',
+      entities: [User, Topic],
+      synchronize: true,
+    }),
+    TypeOrmModule.forFeature([User, Topic])
   ],
-  controllers: [AppController, ProfileController, TopicController],
-  providers: [AppService, ProfileService, TopicService],
+  controllers: [AppController, ProfileController, UserController, TopicController],
+  providers: [AppService, ProfileService, UserService, TopicService],
 })
 export class AppModule {}
