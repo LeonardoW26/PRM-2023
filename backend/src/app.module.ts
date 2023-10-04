@@ -1,3 +1,5 @@
+import { AuthService } from './services/auth.service';
+import { AuthController } from './controllers/auth.controller';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -25,7 +27,7 @@ import { Topic } from './entities/topic.entity';
     }),
     TypeOrmModule.forFeature([User, Topic])
   ],
-  controllers: [AppController, ProfileController, UserController, TopicController],
-  providers: [AppService, ProfileService, UserService, TopicService],
+  controllers: [AppController, ProfileController, UserController, TopicController, AuthController],
+  providers: [AppService, ProfileService, UserService, TopicService, AuthService],
 })
 export class AppModule {}
