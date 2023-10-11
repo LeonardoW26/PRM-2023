@@ -1,8 +1,10 @@
-import {CanActivate, ExecutionContext, UnauthorizedException} from '@nestjs/common';
+import {CanActivate, ExecutionContext, Injectable, UnauthorizedException} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
 import { UserService } from 'src/services/user.service';
 
+
+@Injectable()
 export class AuthGurd implements CanActivate {
 
     constructor(
@@ -19,16 +21,17 @@ export class AuthGurd implements CanActivate {
         }
 
         let username = '';
+
         try {
             const payload = await this.jwtService.verifyAsync(token)
-            console.log('Buuuuuuuuuu', payload)
-        } catch {
+            username = payload.userName
+        } catch (error) {
             throw new UnauthorizedException('Token Invalido')
             
         }
 
         const found = await this.userService.findByUsername(username);
-
+        
         if(!found) {
             throw new UnauthorizedException('Usuario não cadastrado')
         }
