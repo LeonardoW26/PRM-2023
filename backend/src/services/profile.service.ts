@@ -4,9 +4,9 @@ import { Injectable } from "@nestjs/common"
 export class ProfileService {
     profile() {
         return {
-            fullname: 'Daniel dos Santos Scabeni',
-            username: 'scabecini',
-            description: 'Lembrar de savar o projeto e remover a senha do banco antes de fazer commit',
+            fullname: 'Leonardo Welzel',
+            username: 'Mandelão',
+            description: 'Locuragem.org',
             createAt: '2022-08-13'
         } 
     }

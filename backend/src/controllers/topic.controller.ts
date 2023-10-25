@@ -1,8 +1,9 @@
 import { Topic } from './../entities/topic.entity';
-import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Param, ParseIntPipe, Post, Put, UseGuards } from "@nestjs/common";
+import { Body, ClassSerializerInterceptor, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Param, ParseIntPipe, Post, Put, UseGuards, UseInterceptors } from "@nestjs/common";
 import { AuthGurd } from 'src/guards/auth.guard';
 import { TopicService } from "src/services/topic.service";
 
+@UseInterceptors(ClassSerializerInterceptor)
 @Controller('Topics')
 export class TopicController {
 

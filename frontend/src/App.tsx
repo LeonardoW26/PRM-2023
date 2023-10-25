@@ -1,12 +1,27 @@
+import { Route, Routes } from "react-router-dom"
 import TopicPage from "./pages/Topic/index"
+import SignInPage from "./pages/SignIn"
+import SignUpPage from "./pages/SignUp"
+import { useAuth } from "./hook/useAuth"
 
 
 function App() {
 
+  const { user } = useAuth();
+
   return (
       <div id="App">
-        
-        <TopicPage />
+
+        { user ? (
+          <Routes>
+            <Route path="/" element={ <TopicPage /> } />
+          </Routes>
+        ) : (
+          <Routes>
+            <Route path="*" element={ <SignInPage /> } />
+            <Route path="/signup" element={ <SignUpPage /> } />
+          </Routes>
+        )}
 
       </div>
   )

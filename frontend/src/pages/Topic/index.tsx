@@ -36,11 +36,11 @@ function TopicPage() {
 
     useEffect(() => {
 
-        fetch('http://localhost:3000/profile')
-        .then(res => res.json())
-        .then(data => {
-            setProfile(data);
-        })
+        //fetch('http://localhost:3000/profile')
+        //.then(res => res.json())
+        //.then(data => {
+          //  setProfile(data);
+        //})
 
     }, [])
 
