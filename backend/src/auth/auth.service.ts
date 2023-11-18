@@ -1,6 +1,6 @@
-import { ApplicationException } from './../exceptions/index';
+import { ApplicationException } from '../@exceptions/index';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from './../entities/user.entity';
+import { User } from '../users/user.entity';
 import { Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
 
