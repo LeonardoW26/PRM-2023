@@ -2,7 +2,7 @@ import { Column, CreateDateColumn, UpdateDateColumn, Entity, JoinColumn, ManyToO
 import { User } from "../users/user.entity";
 import { Topic } from "@mui/icons-material";
 
-@Entity()
+@Entity('topic_user_comment')
 export class Comment {
     @PrimaryGeneratedColumn()
     id: number;
