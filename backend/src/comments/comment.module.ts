@@ -6,9 +6,10 @@ import { Comment } from "./comment.entity";
 import { TopicModule } from "src/topics/topic.module";
 import { User } from "src/users/user.entity";
 import { Topic } from "src/topics/topic.entity";
+import { UserModule } from "src/users/user.module";
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Comment]), TopicModule, Topic, User],
+    imports: [TypeOrmModule.forFeature([Comment, Topic, User]), TopicModule, UserModule],
     providers: [CommentService],
     controllers: [CommentController]
 

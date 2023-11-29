@@ -7,6 +7,9 @@ import { UserModule } from './users/user.module';
 import { TopicModule } from './topics/topic.module';
 import { AuthModule } from './auth/auth.module';
 import { ProfileModule } from './profiles/profile.module';
+import { CommentModule } from './comments/comment.module';
+import { RepostModule } from './reposts/repost.module';
+import { LikeModule } from './likes/like.module';
 
 @Module({
   imports: [
@@ -29,6 +32,9 @@ import { ProfileModule } from './profiles/profile.module';
     TopicModule,
     AuthModule,
     ProfileModule,
+    CommentModule,
+    RepostModule,
+    LikeModule
   ],
   controllers: [],
   providers: []

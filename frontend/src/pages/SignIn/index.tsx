@@ -5,7 +5,8 @@ import { ICredential } from "../../@types";
 import { LoadingButton } from "@mui/lab";
 import { useAuth } from "../../hook/useAuth";
 
-import '../../assets/css/sign.css'
+
+import '../../assets/css/sign.css';
 
 function SignInPage() {
 
@@ -24,7 +25,7 @@ function SignInPage() {
     const [loading, setLoading] = useState(false)
 
     //State - Error Message
-    const [MessageError, setMessageError] = useState('');
+    const [messageError, setMessageError] = useState('');
 
     async function handleSignIn(event: FormEvent) {
         event.preventDefault();
@@ -37,7 +38,7 @@ function SignInPage() {
         } catch (e) {
             const error = e as Error;
             setMessageError(String(error.message));
-            
+            console.log('ERROR:', String(error.message))
         } finally {
             setLoading(false);
         }
@@ -74,13 +75,12 @@ function SignInPage() {
                             loading={loading}>
                             Acessar
                         </LoadingButton>
-
-                        <Box>
+                            
+                        <Box className="sign-separator">
                             <Box className="traco"></Box>
                             <Typography component="h5">OU</Typography>
                             <Box className="traco"></Box>
                         </Box>
-                            
 
                         <Typography variant="h5">
                             Crie uma Conta
@@ -100,15 +100,16 @@ function SignInPage() {
             </form>
 
             <Snackbar
-                open={Boolean(MessageError)}
+                open={Boolean(messageError)}
                 autoHideDuration={6000}
                 anchorOrigin={{vertical: 'top', horizontal: 'right'}}>
 
-                    <Alert severity="error" variant="filled" onClose={() => setMessageError('')}>
-                        {MessageError}
-                    </Alert>
-
-                    </Snackbar>
+                <Alert severity="error" 
+                    variant="filled" 
+                    onClose={() => setMessageError('')}>
+                    {messageError}
+                </Alert>
+            </Snackbar>
         </Box>
     )
 }

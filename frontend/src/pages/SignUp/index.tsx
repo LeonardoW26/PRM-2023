@@ -5,7 +5,8 @@ import { IUser } from "../../@types";
 import { LoadingButton } from "@mui/lab";
 import { useAuth } from "../../hook/useAuth";
 
-import '../../assets/css/sign.css'
+
+import '../../assets/css/sign.css';
 
 function SignUpPage() {
 
@@ -15,19 +16,19 @@ function SignUpPage() {
 
     const [userForm, setUserForm] = useState<IUser>(
         {
-        fullname: '',
-        username: '',
-        password: '',
-        description: ''
+            fullname: '',
+            username: '',
+            password: '',
+            description: ''
         }
-        );
+    );
 
     //State - Loading
     const [loading, setLoading] = useState(false)
 
-    //State - Error Message
-    const [MessageError, setMessageError] = useState('');
-    const [MessageSuccess, setMessageSuccess] = useState('');
+    //State - Messages
+    const [messageError, setMessageError] = useState('');
+    const [messageSuccess, setMessageSuccess] = useState('');
 
     async function handleSignUp(event: FormEvent) {
         event.preventDefault();
@@ -37,20 +38,21 @@ function SignUpPage() {
         setMessageSuccess('');
 
         try {
+
             await register(userForm);
 
             setUserForm({
-                    fullname: '',
-                    username: '',
-                    password: '',
-                    description: ''
+                fullname: '',
+                username: '',
+                password: '',
+                description: ''
             })
 
-            setMessageSuccess('Usuario Criado com sucesso');
+            setMessageSuccess('Usuário criado com sucesso');
+
         } catch (e) {
             const error = e as Error;
             setMessageError(String(error.message));
-            
         } finally {
             setLoading(false);
         }
@@ -65,7 +67,7 @@ function SignUpPage() {
                             Crie uma Conta
                         </Typography>
                         <Typography variant="subtitle1">
-                            Ainda não tem uma conta TOPIC?
+                            Ainda não tem uma conta TOPIC? 
                         </Typography>
 
                         <TextField label="Nome Completo"
@@ -73,7 +75,7 @@ function SignUpPage() {
                             fullWidth
                             value={ userForm.fullname }
                             onChange={event => setUserForm({...userForm, fullname: (event.target as HTMLInputElement).value})} />
-                            
+
                         <TextField label="Usuário"
                             required
                             fullWidth
@@ -93,13 +95,12 @@ function SignUpPage() {
                             loading={loading}>
                             Criar
                         </LoadingButton>
-
-                        <Box>
+                            
+                        <Box className="sign-separator">
                             <Box className="traco"></Box>
                             <Typography component="h5">OU</Typography>
                             <Box className="traco"></Box>
                         </Box>
-                            
 
                         <Typography variant="h5">
                             Faça o Login
@@ -119,26 +120,28 @@ function SignUpPage() {
             </form>
 
             <Snackbar
-                open={Boolean(MessageError)}
+                open={Boolean(messageError)}
                 autoHideDuration={6000}
                 anchorOrigin={{vertical: 'top', horizontal: 'right'}}>
 
-                    <Alert severity="error" variant="filled" onClose={() => setMessageError('')}>
-                        {MessageError}
-                    </Alert>
+                <Alert severity="error" 
+                    variant="filled" 
+                    onClose={() => setMessageError('')}>
+                    {messageError}
+                </Alert>
+            </Snackbar>
 
-                    </Snackbar>
+            <Snackbar
+                open={Boolean(messageSuccess)}
+                autoHideDuration={6000}
+                anchorOrigin={{vertical: 'top', horizontal: 'right'}}>
 
-                    <Snackbar
-                        open={Boolean(MessageSuccess)}
-                        autoHideDuration={6000}
-                        anchorOrigin={{vertical: 'top', horizontal: 'right'}}>
-
-                        <Alert severity="success" variant="filled" onClose={() => setMessageSuccess('')}>
-                            {MessageError}
-                        </Alert>
-
-                    </Snackbar>
+                <Alert severity="success" 
+                    variant="filled" 
+                    onClose={() => setMessageSuccess('')}>
+                    {messageSuccess}
+                </Alert>
+            </Snackbar>
         </Box>
     )
 }

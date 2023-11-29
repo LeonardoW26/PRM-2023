@@ -2,8 +2,6 @@ import { Body, ClassSerializerInterceptor, Controller, Delete, Get, HttpCode, Ht
 import { CommentService } from "./comment.service";
 import { TopicService } from "src/topics/topic.service";
 import { AuthGuard } from "src/auth/auth.guard";
-import { Topic } from "@mui/icons-material";
-import { query } from "express";
 import { Comment } from "./comment.entity";
 
 
